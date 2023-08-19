@@ -1,24 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { Route, Routes, Link, BrowserRouter } from "react-router-dom";
+import { logo } from "./assets";
+import Home from "./pages/Home";
+import CreatePost from "./pages/CreatePost";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+  return(
+    <BrowserRouter>
+      <header className="w-full flex justify-between items-center bg-white sm:px-8 px-4 py-4 border-b border-b-[#e6ebf4]">
+        <Link to="/">
+          <img src={logo} alt="logo" className="w-28 object-contain"/>
+        </Link>
+        <Link className="font-inter font-medium bg-[#6469ff] text-white px-4 py-2 rounded-md" to="/create-post">
+          Create
+        </Link>
       </header>
-    </div>
+
+      <main className="sm:p-8 px-4 py-8 w-full bg-[#f9fafe] min-h-[calc(100vh-73px)]">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/create-post" element={<CreatePost />}/>
+        </Routes>
+
+      </main>
+    </BrowserRouter>
   );
 }
 
